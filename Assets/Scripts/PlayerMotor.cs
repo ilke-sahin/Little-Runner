@@ -11,12 +11,15 @@ public class PlayerMotor : MonoBehaviour
         verticalVelocity = 0.0f,
         gravity = 12.0f;
 
+    public static int numOfCoins;
+
     private float animationDuration = 3.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        numOfCoins = 0;
     }
 
     // Update is called once per frame

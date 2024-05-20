@@ -5,12 +5,13 @@ using UnityEngine;
 public class TileManager : MonoBehaviour
 {
     public GameObject[] tilePrefabs;
+    public GameObject coinPrefab;
 
     private Transform playerTransform;
     private float spawnZ = -3.0f;
     private float tileLength = 7.0f;
     private float safeZone = 15.0f;
-    private int amtTilesOnScreen = 5;
+    private int amtTilesOnScreen = 9;
     private int lastPrefabIndex = 0;
 
     private List<GameObject> activeTiles;
@@ -43,6 +44,7 @@ public class TileManager : MonoBehaviour
         if (playerTransform.position.z - safeZone > spawnZ - amtTilesOnScreen * tileLength)
         {
             SpawnTile();
+            SpawnCoins();
             DeleteTile();
         }
     }
@@ -79,5 +81,27 @@ public class TileManager : MonoBehaviour
         }
         lastPrefabIndex = randomIndex;
         return randomIndex;
+    }
+
+    public void SpawnCoins()
+    {        
+        GameObject lastTile = activeTiles[^2];
+
+        int coinsToSpawn = Random.Range(0,2);
+        for (int i = 0; i < coinsToSpawn; i++)
+        {
+            GameObject temp = Instantiate(coinPrefab, lastTile.transform);
+            temp.transform.position = GetRandomPointInCollider(lastTile.GetComponent<Collider>());
+        }
+    }
+    Vector3 GetRandomPointInCollider(Collider collider)
+    {
+        Vector3 point = new Vector3(
+            Random.Range(collider.bounds.min.x, collider.bounds.max.x),
+            2,
+            Random.Range(collider.bounds.min.z, collider.bounds.max.z)
+            );
+
+        return point;
     }
 }
