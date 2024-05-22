@@ -119,4 +119,8 @@ public class PlayerMotor : MonoBehaviour
     {
         speed = 5.0f + modifier;
     }
+    public void Setspeed(float modifier)
+    {
+        speed = 5.0f + modifier;
+    }
 }
