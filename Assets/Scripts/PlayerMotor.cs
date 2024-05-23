@@ -15,43 +15,39 @@ public class PlayerMotor : MonoBehaviour
 
     public static int numOfCoins;
 
-    private float animationDuration = 3.0f;
-    private bool isSliding = false; // Flag to check if the player is sliding
-    private float slideDuration = 1.0f; // Duration of the slide
-    private float slideSpeed = 10.0f; // Speed during the slide
+    private float animationDuration = 3.0f, time = 0f;
+    private bool isSliding = false;
+    private float slideDuration = 1.0f;
+    private float slideSpeed = 10.0f;
 
-    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         numOfCoins = 0;
+        time= 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (EndOfGame.gameOver) // Stop updating if the game is over
+        time += Time.deltaTime;
+        if (EndOfGame.gameOver)
         {
             return;
         }
 
-        //to stop the player from moving left right in the first 3 seconds
-        if (Time.time < animationDuration)
+        if (time < animationDuration)
         {
             controller.Move(Vector3.forward * speed * Time.deltaTime);
             return; //when it hits return the rest of the code wont be run
         }
-
         moveVector = Vector3.zero;
 
-        // Handle sliding
         if (Input.GetKeyDown(KeyCode.S) && !isSliding) // Changed to KeyCode.S
         {
             StartCoroutine(Slide());
         }
 
-        // Applying gravity
         if (controller.isGrounded)
         {
             verticalVelocity = -0.5f;
@@ -59,7 +55,6 @@ public class PlayerMotor : MonoBehaviour
             // Jumping
             if (Input.GetKeyDown(KeyCode.W))
             {
-                Debug.Log("Jumping!");
                 verticalVelocity = jumpForce; // Apply upward force for jumping
                 animator.SetTrigger("Jump");
             }
@@ -122,14 +117,7 @@ public class PlayerMotor : MonoBehaviour
     {
         speed = 5.0f + modifier;
     }
-<<<<<<< Updated upstream
-    public void Setspeed(float modifier)
-    {
-        speed = 5.0f + modifier;
-    }
-}
-=======
-
+    
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.transform.tag == "Obstacles")
@@ -138,5 +126,5 @@ public class PlayerMotor : MonoBehaviour
             animator.SetTrigger("Die"); // Maybe we can add death animation
         }
     }
+
 }
->>>>>>> Stashed changes

@@ -9,10 +9,15 @@ public class Events : MonoBehaviour
     {
         // Ensure the game is not paused when restarting
         Time.timeScale = 1;
-        SceneManager.LoadScene("Level");
-        Debug.Log("ReplayGame function called.");
+        transform.position = Vector3.zero;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
     public void QuitGame()
     {
         Application.Quit();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndOfGame : MonoBehaviour
 {
@@ -25,8 +26,8 @@ public class EndOfGame : MonoBehaviour
             {
                 Time.timeScale = 0;
                 gameOverPanel.SetActive(true);
-                gameOver = false; // Prevent the timer from being called repeatedly
-                gameOverTimer = 0f; // Reset the timer
+                gameOver = false;
+                gameOverTimer = 0f;
             }
         }
         
@@ -36,4 +37,5 @@ public class EndOfGame : MonoBehaviour
     {
         gameOver = true;
     }
+
 }
