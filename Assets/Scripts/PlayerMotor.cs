@@ -6,38 +6,50 @@ public class PlayerMotor : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 moveVector;
+    private Animator animator;
 
     private float speed = 5.0f,
-        jumpForce = 8.0f, // The force applied when jumping
         verticalVelocity = 0.0f,
+        jumpForce = 8.0f, // The force applied when jumping
         gravity = 12.0f;
 
     public static int numOfCoins;
 
     private float animationDuration = 3.0f;
-    private float maxSpeed = 50f; // Maximum speed allowed
-
-    private int desiredLane = 1; // 0 = Left, 1 = Middle, 2 = Right
-    private float laneDistance = 3.0f; // The distance between two lanes
+    private bool isSliding = false; // Flag to check if the player is sliding
+    private float slideDuration = 1.0f; // Duration of the slide
+    private float slideSpeed = 10.0f; // Speed during the slide
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
         numOfCoins = 0;
-        StartCoroutine(IncreaseSpeedOverTime());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time < animationDuration)
+        if (EndOfGame.gameOver) // Stop updating if the game is over
         {
-            controller.Move(Vector3.forward * speed * Time.deltaTime);
             return;
         }
 
+        //to stop the player from moving left right in the first 3 seconds
+        if (Time.time < animationDuration)
+        {
+            controller.Move(Vector3.forward * speed * Time.deltaTime);
+            return; //when it hits return the rest of the code wont be run
+        }
+
         moveVector = Vector3.zero;
+
+        // Handle sliding
+        if (Input.GetKeyDown(KeyCode.S) && !isSliding) // Changed to KeyCode.S
+        {
+            StartCoroutine(Slide());
+        }
 
         // Applying gravity
         if (controller.isGrounded)
@@ -45,10 +57,11 @@ public class PlayerMotor : MonoBehaviour
             verticalVelocity = -0.5f;
 
             // Jumping
-            if (SwipeManager.swipeUp)
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 Debug.Log("Jumping!");
                 verticalVelocity = jumpForce; // Apply upward force for jumping
+                animator.SetTrigger("Jump");
             }
         }
         else
@@ -56,71 +69,74 @@ public class PlayerMotor : MonoBehaviour
             verticalVelocity -= gravity * Time.deltaTime;
         }
 
-        // Check for swipes
-        if (SwipeManager.swipeRight)
-        {
-            desiredLane++;
-            if (desiredLane == 3)
-                desiredLane = 2;
-        }
-        if (SwipeManager.swipeLeft)
-        {
-            desiredLane--;
-            if (desiredLane == -1)
-                desiredLane = 0;
-        }
-
-        // Calculate where we should be in the future
-        Vector3 targetPosition = transform.position.z * Vector3.forward;
-        if (desiredLane == 0)
-            targetPosition += Vector3.left * laneDistance;
-        else if (desiredLane == 2)
-            targetPosition += Vector3.right * laneDistance;
-
-        // Move towards the target position
-        if (transform.position != targetPosition)
-        {
-            Vector3 diff = targetPosition - transform.position;
-            Vector3 moveDir = diff.normalized * 25 * Time.deltaTime;
-            if (moveDir.sqrMagnitude < diff.sqrMagnitude)
-                controller.Move(moveDir);
-            else
-                controller.Move(diff);
-        }
-
         // X = left and right
-        moveVector.x = (targetPosition - transform.position).x;
+        moveVector.x = Input.GetAxisRaw("Horizontal") * speed;
 
         // Y = up and down
         moveVector.y = verticalVelocity;
 
         // Z = forward and backward
-        moveVector.z = speed;
+        moveVector.z = isSliding ? slideSpeed : speed;
 
-        // Move the player
         controller.Move(moveVector * Time.deltaTime);
+
+        // Check if the player falls off the screen
+        if (transform.position.y < -5) // Adjust this value as needed
+        {
+            EndOfGame.TriggerGameOver();
+        }
     }
 
-    IEnumerator IncreaseSpeedOverTime()
+    private IEnumerator Slide()
     {
-        float increaseAmount = 1.0f;
-        float timeInterval = 1.0f;
+        isSliding = true;
 
-        while (true)
-        {
-            yield return new WaitForSeconds(timeInterval);
-            speed = Mathf.Min(speed + increaseAmount, maxSpeed);
-            increaseAmount *= 0.9f;
-            timeInterval += 0.5f;
-        }
+        // Trigger the slide animation
+        animator.SetBool("isSliding", true);
+
+        // Reduce the height of the player for sliding
+        controller.height = 0.5f;
+        controller.center = new Vector3(controller.center.x, 0.25f, controller.center.z);
+
+        // Set slide speed
+        float originalSpeed = speed;
+        speed = slideSpeed;
+
+        // Wait for the slide duration
+        yield return new WaitForSeconds(slideDuration);
+
+        // Reset the height of the player after sliding
+        controller.height = 2.0f;
+        controller.center = new Vector3(controller.center.x, 1.0f, controller.center.z);
+
+        // Reset speed
+        speed = originalSpeed;
+
+        // Reset the slide animation
+        animator.SetBool("isSliding", false);
+
+        isSliding = false;
     }
 
     public void Setspeed(float modifier)
     {
         speed = 5.0f + modifier;
     }
+<<<<<<< Updated upstream
     public void Setspeed(float modifier)
     {
         speed = 5.0f + modifier;
     }
 }
+=======
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.transform.tag == "Obstacles")
+        {
+            EndOfGame.TriggerGameOver();
+            animator.SetTrigger("Die"); // Maybe we can add death animation
+        }
+    }
+}
+>>>>>>> Stashed changes

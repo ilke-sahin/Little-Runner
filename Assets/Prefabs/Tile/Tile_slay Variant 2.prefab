@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4096449574246004291, guid: 1d0d62047c0ad0d469d62127fbd1e23d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 8250593785596600116, guid: 1d0d62047c0ad0d469d62127fbd1e23d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.56145

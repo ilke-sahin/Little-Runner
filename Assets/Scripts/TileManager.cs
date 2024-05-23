@@ -87,7 +87,7 @@ public class TileManager : MonoBehaviour
     {        
         GameObject lastTile = activeTiles[^2];
 
-        int coinsToSpawn = Random.Range(0,2);
+        int coinsToSpawn = Random.Range(0,3);
         for (int i = 0; i < coinsToSpawn; i++)
         {
             GameObject temp = Instantiate(coinPrefab, lastTile.transform);

@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4566723076063939030}
   m_Layer: 0
   m_Name: BigStone 1
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 8158512219592558706}
   m_Layer: 0
   m_Name: LittleStone 1
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 7064700863088559436}
   m_Layer: 0
   m_Name: BigStone 1 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 7442278857866669328}
   m_Layer: 0
   m_Name: LittleStone 1 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1130,7 +1130,7 @@ GameObject:
   - component: {fileID: 2392798525355957416}
   m_Layer: 0
   m_Name: LittleStone 3
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1233,6 +1233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LittleStone 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1171907984793937626, guid: 5119d5f0634b90c4fa893861654e81b3, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 4884336395243390186, guid: 5119d5f0634b90c4fa893861654e81b3, type: 3}
       propertyPath: m_LocalScale.x
       value: 5.877325
@@ -1306,6 +1310,10 @@ PrefabInstance:
     - target: {fileID: 1117072641490971689, guid: 5f226faa30648a445a5e57937c3c8b21, type: 3}
       propertyPath: m_Name
       value: Nameplate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117072641490971689, guid: 5f226faa30648a445a5e57937c3c8b21, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     - target: {fileID: 8061542430913153960, guid: 5f226faa30648a445a5e57937c3c8b21, type: 3}
       propertyPath: m_LocalScale.y

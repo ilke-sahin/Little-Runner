@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nameplate
       objectReference: {fileID: 0}
+    - target: {fileID: 1117072641490971689, guid: 8dae05d3f47952b4ea654ded5ea3d5da, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     - target: {fileID: 8061542430913153960, guid: 8dae05d3f47952b4ea654ded5ea3d5da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.13
@@ -328,6 +332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LittleStone 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5275811773281775498, guid: 585134f2c275a0447aea1808d2c99a83, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -471,6 +479,10 @@ PrefabInstance:
     - target: {fileID: 6657649295933899738, guid: bd384c60c7963ba429357e1c90c356ed, type: 3}
       propertyPath: m_Name
       value: Tile_slay Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6657649295933899738, guid: bd384c60c7963ba429357e1c90c356ed, type: 3}
+      propertyPath: m_TagString
+      value: Obstacles
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
