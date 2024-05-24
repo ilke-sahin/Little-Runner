@@ -9,6 +9,7 @@ public class PlayerMotor : MonoBehaviour
     private Animator animator;
 
     private float speed = 5.0f,
+        jumpSpeed,
         verticalVelocity = 0.0f,
         jumpForce = 8.0f, // The force applied when jumping
         gravity = 12.0f;
@@ -51,12 +52,15 @@ public class PlayerMotor : MonoBehaviour
         if (controller.isGrounded)
         {
             verticalVelocity = -0.5f;
-
+            jumpSpeed = speed + 2;
             // Jumping
             if (Input.GetKeyDown(KeyCode.W))
             {
                 verticalVelocity = jumpForce; // Apply upward force for jumping
                 animator.SetTrigger("Jump");
+
+                speed = jumpSpeed;
+
             }
         }
         else
