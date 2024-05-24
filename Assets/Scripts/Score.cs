@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     private float score = 0.0f;
-    private int difficultyLevel = 1;
+    private float difficultyLevel = 1;
     private int maxDifficultyLevel = 10;
     private int scoreToNextLevel = 10;
 
@@ -28,7 +28,7 @@ public class Score : MonoBehaviour
         return;
 
         scoreToNextLevel *= 2;
-        difficultyLevel++;
+        difficultyLevel+=0.5f;
 
        GetComponent<PlayerMotor>().Setspeed (difficultyLevel);
 
