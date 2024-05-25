@@ -9,23 +9,17 @@ public class EndOfGame : MonoBehaviour
     public static bool gameOver;
     public GameObject gameOverPanel;
     public float delay = 0.5f;
+    private CoinCounter coinCounter;
 
-    //sound effect
-    SoundEffectsPLayer soundEffectsplayer;
-
-    private void Awake()
-    {
-        soundEffectsplayer = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundEffectsPLayer>();
-    }
-
-    void Start()
+    private void Start()
     {
         gameOver = false;
         Time.timeScale = 1;
-        gameOverPanel.SetActive(false); // panel is hidden at first
+        gameOverPanel.SetActive(false);
+        coinCounter = GameObject.FindObjectOfType<CoinCounter>();
     }
 
-    void Update()
+    private void Update()
     {
         if (gameOver)
         {
@@ -37,17 +31,17 @@ public class EndOfGame : MonoBehaviour
                 gameOver = false;
                 gameOverTimer = 0f;
 
-                soundEffectsplayer.PlaySFX(soundEffectsplayer.endgame);//sfx
-                soundEffectsplayer.StopBackgroundMusic(); //end music
+                // Coin sayýsýný göster
+                if (coinCounter != null)
+                {
+                    coinCounter.ShowFinalCoinCount();
+                }
             }
         }
-        
     }
 
     public static void TriggerGameOver()
     {
         gameOver = true;
-         
     }
-
 }

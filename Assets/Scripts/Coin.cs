@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-
-    //sound effect
+    // sound effect
     SoundEffectsPLayer soundEffectsplayer;
+    private CoinCounter coinCounter;
 
     private void Awake()
     {
         soundEffectsplayer = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundEffectsPLayer>();
+        coinCounter = GameObject.FindObjectOfType<CoinCounter>();
     }
 
     // Update is called once per frame
@@ -21,11 +20,13 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             soundEffectsplayer.PlaySFX(soundEffectsplayer.collect);
-
-            PlayerMotor.numOfCoins++;
+            if (coinCounter != null)
+            {
+                coinCounter.AddCoin();
+            }
             Destroy(gameObject);
         }
     }

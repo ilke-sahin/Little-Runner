@@ -7,7 +7,8 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private Vector3 moveVector;
     private Animator animator;
-    //sound effect
+
+    // sound effect
     SoundEffectsPLayer soundEffectsplayer;
 
     private void Awake()
@@ -33,7 +34,7 @@ public class PlayerMotor : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         numOfCoins = 0;
-        time= 0f;
+        time = 0f;
     }
 
     void Update()
@@ -47,7 +48,7 @@ public class PlayerMotor : MonoBehaviour
         if (time < animationDuration)
         {
             controller.Move(Vector3.forward * speed * Time.deltaTime);
-            return; //when it hits return the rest of the code wont be run
+            return; // when it hits return the rest of the code won't be run
         }
         moveVector = Vector3.zero;
 
@@ -95,7 +96,7 @@ public class PlayerMotor : MonoBehaviour
         isSliding = true;
         animator.SetBool("isSliding", true);
 
-        //reduce player height when sliding
+        // reduce player height when sliding
         controller.height = 0.5f;
         controller.center = new Vector3(controller.center.x, 0.25f, controller.center.z);
 
@@ -118,7 +119,7 @@ public class PlayerMotor : MonoBehaviour
     {
         speed = 5.0f + modifier;
     }
-    
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.transform.tag == "Obstacles" || hit.transform.tag == "Enemy")
@@ -128,5 +129,4 @@ public class PlayerMotor : MonoBehaviour
             animator.SetTrigger("Die");
         }
     }
-
 }
