@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private Transform player;
 
-    private float range = 7.5f;
+    private float range = 9f;
 
     private NavMeshAgent agent;
 
@@ -33,10 +33,6 @@ public class EnemyController : MonoBehaviour
             transform.LookAt(player);
             agent.SetDestination(player.position);
             targettingPlayer = true;
-            if (Vector3.Distance(transform.position, player.position) <= 1f)
-            {
-                animator.SetTrigger("Attack");
-            }
         }
         else
             targettingPlayer = false;

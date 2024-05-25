@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.59912574, g: 0.8206375, b: 0.9416066, a: 1}
+  m_IndirectSpecularColor: {r: 0.59912634, g: 0.8206391, b: 0.94160724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1485,7 +1485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1604,8 +1604,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aef6ce0b7efc484dbd8653ffc4465b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  range: 100
   chooseshootingmaterial: {fileID: 2095914633201331997, guid: fe087ff652242bb4a96dd2c77404682c, type: 3}
   bulletspeed: 15
 --- !u!1 &1731382556
@@ -1622,7 +1620,7 @@ GameObject:
   - component: {fileID: 1731382558}
   - component: {fileID: 1731382561}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1694,7 +1692,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 66167652}
         m_TargetAssemblyTypeName: Events, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: Menu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
