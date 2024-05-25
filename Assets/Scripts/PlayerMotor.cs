@@ -44,7 +44,7 @@ public class PlayerMotor : MonoBehaviour
         }
         moveVector = Vector3.zero;
 
-        if (Input.GetKeyDown(KeyCode.S) && !isSliding) // Changed to KeyCode.S
+        if (Input.GetKeyDown(KeyCode.S) && !isSliding) // sliding with s
         {
             StartCoroutine(Slide());
         }
@@ -56,7 +56,7 @@ public class PlayerMotor : MonoBehaviour
             // Jumping
             if (Input.GetKeyDown(KeyCode.W))
             {
-                verticalVelocity = jumpForce; // Apply upward force for jumping
+                verticalVelocity = jumpForce;
                 animator.SetTrigger("Jump");
 
                 speed = jumpSpeed;
@@ -79,8 +79,8 @@ public class PlayerMotor : MonoBehaviour
 
         controller.Move(moveVector * Time.deltaTime);
 
-        // Check if the player falls off the screen
-        if (transform.position.y < -5) // Adjust this value as needed
+        // if the player falls off the screen
+        if (transform.position.y < -5)
         {
             EndOfGame.TriggerGameOver();
         }
@@ -90,28 +90,23 @@ public class PlayerMotor : MonoBehaviour
     {
         isSliding = true;
 
-        // Trigger the slide animation
         animator.SetBool("isSliding", true);
 
-        // Reduce the height of the player for sliding
+        //reduce player height when sliding
         controller.height = 0.5f;
         controller.center = new Vector3(controller.center.x, 0.25f, controller.center.z);
 
-        // Set slide speed
         float originalSpeed = speed;
         speed = slideSpeed;
 
-        // Wait for the slide duration
         yield return new WaitForSeconds(slideDuration);
 
-        // Reset the height of the player after sliding
         controller.height = 2.0f;
         controller.center = new Vector3(controller.center.x, 1.0f, controller.center.z);
 
-        // Reset speed
         speed = originalSpeed;
 
-        // Reset the slide animation
+        // reset the slide animation
         animator.SetBool("isSliding", false);
 
         isSliding = false;
@@ -124,7 +119,7 @@ public class PlayerMotor : MonoBehaviour
     
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.transform.tag == "Obstacles")
+        if (hit.transform.tag == "Obstacles" || hit.transform.tag == "Enemy")
         {
             EndOfGame.TriggerGameOver();
             animator.SetTrigger("Die"); // Maybe we can add death animation

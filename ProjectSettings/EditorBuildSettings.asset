@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 054e829cae112d244b68bbde704267b2
   - enabled: 1
-    path: Assets/endless.unity
+    path: Assets/Scenes/GameScene.unity
     guid: 3d92c65e5202ef2439c32c38b859fc56
   m_configObjects: {}

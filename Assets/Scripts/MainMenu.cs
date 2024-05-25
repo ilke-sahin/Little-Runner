@@ -19,6 +19,6 @@ public class MainMenu : MonoBehaviour
     
     public void ToGame()
     {
-        SceneManager.LoadScene("endless");
+        SceneManager.LoadScene("GameScene");
     }
 }
