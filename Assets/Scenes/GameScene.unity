@@ -903,6 +903,9 @@ MonoBehaviour:
   sfx2: {fileID: 8300000, guid: 9b05bf85194a6994e87a326b55b12087, type: 3}
   background: {fileID: 0}
   death: {fileID: 0}
+  attack: {fileID: 0}
+  jump: {fileID: 0}
+  collect: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2047,10 @@ MonoBehaviour:
   sfx1: {fileID: 0}
   sfx2: {fileID: 0}
   background: {fileID: 8300000, guid: 4f59c19861f17ce4b9d69274c433aea2, type: 3}
-  death: {fileID: 8300000, guid: f10e7ff812627164fa39911459400577, type: 3}
+  death: {fileID: 8300000, guid: efc3f2eb62e42f44b849b70d51c2fe58, type: 3}
+  attack: {fileID: 8300000, guid: 44766caa059435f4fb71af84b2bea7e4, type: 3}
+  jump: {fileID: 8300000, guid: e26b12344a8fdd2439361d014323be33, type: 3}
+  collect: {fileID: 8300000, guid: 5aa948679296f2649802b2f562804537, type: 3}
 --- !u!1001 &2799056996461447524
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ public class SoundEffectsPLayer : MonoBehaviour
     public AudioClip sfx1,sfx2;
     public AudioClip background;
     public AudioClip death;
+    public AudioClip attack;
+    public AudioClip jump;
+    public AudioClip collect;
 
     public void Button1()
     {

@@ -7,6 +7,12 @@ public class shooter : MonoBehaviour
     public GameObject chooseshootingmaterial;
     public float bulletspeed = 15f;
     Animator animator;
+    SoundEffectsPLayer soundEffectsplayer;
+
+    private void Awake()
+    {
+        soundEffectsplayer = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundEffectsPLayer>();
+    }
 
     private void Start()
     {
@@ -17,6 +23,7 @@ public class shooter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Shoot();
+            soundEffectsplayer.PlaySFX(soundEffectsplayer.attack);
         }
     }
 
