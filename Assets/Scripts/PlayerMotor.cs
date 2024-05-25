@@ -8,6 +8,13 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 moveVector;
     private Animator animator;
 
+    SoundEffectsPLayer soundEffectsplayer;
+
+    private void Awake()
+    {
+        soundEffectsplayer = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundEffectsPLayer>();
+    }
+
     private float speed = 5.0f,
         jumpSpeed,
         verticalVelocity = 0.0f,
@@ -121,6 +128,7 @@ public class PlayerMotor : MonoBehaviour
     {
         if (hit.transform.tag == "Obstacles" || hit.transform.tag == "Enemy")
         {
+            soundEffectsplayer.PlaySFX(soundEffectsplayer.death);
             EndOfGame.TriggerGameOver();
             animator.SetTrigger("Die"); // Maybe we can add death animation
         }
