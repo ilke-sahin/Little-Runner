@@ -74,6 +74,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4818883072283852278}
     m_Modifications:
+    - target: {fileID: -7703335909242342749, guid: f511578de5244d24d8896f01bc37f583, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7038896946776773101, guid: f511578de5244d24d8896f01bc37f583, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.55898
@@ -144,6 +148,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4818883072283852278}
     m_Modifications:
+    - target: {fileID: -7942560008446801626, guid: 2f40c419bd3e540408f5af549d78ea76, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4501045251306008902, guid: 2f40c419bd3e540408f5af549d78ea76, type: 3}
       propertyPath: m_Name
       value: Bush 2
@@ -214,6 +222,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4818883072283852278}
     m_Modifications:
+    - target: {fileID: -2772012954603642739, guid: 822eca22c3c604347af004b5bbdfc67a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3312683397505606994, guid: 822eca22c3c604347af004b5bbdfc67a, type: 3}
       propertyPath: m_Name
       value: Grass (1)
@@ -354,6 +366,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4818883072283852278}
     m_Modifications:
+    - target: {fileID: -2772012954603642739, guid: 822eca22c3c604347af004b5bbdfc67a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3312683397505606994, guid: 822eca22c3c604347af004b5bbdfc67a, type: 3}
       propertyPath: m_Name
       value: Grass
@@ -552,6 +568,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4818883072283852278}
     m_Modifications:
+    - target: {fileID: -2772012954603642739, guid: 822eca22c3c604347af004b5bbdfc67a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3312683397505606994, guid: 822eca22c3c604347af004b5bbdfc67a, type: 3}
       propertyPath: m_Name
       value: Grass
