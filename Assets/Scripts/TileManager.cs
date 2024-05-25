@@ -14,8 +14,10 @@ public class TileManager : MonoBehaviour
     private float safeZone = 15.0f;
     private int amtTilesOnScreen = 9;
     private int lastPrefabIndex = 0;
+    private int tileCounter = -1;
 
     private List<GameObject> activeTiles;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +33,10 @@ public class TileManager : MonoBehaviour
             if (i < 4)
                 SpawnTile(0);
             else
+            {
                 SpawnTile();
-
+            }
         }
-
     }
 
     // Update is called once per frame
@@ -54,26 +56,37 @@ public class TileManager : MonoBehaviour
     {
         GameObject gameOb;
         if (prefabIndex == -1)
+        {
             gameOb = Instantiate(tilePrefabs[RandomPrefabIndex()]) as GameObject;
+            NavMeshSurface navMeshSurface = gameOb.GetComponent<NavMeshSurface>();
+            if (navMeshSurface != null)
+            {
+                navMeshSurface.BuildNavMesh();
+                SpawnEnemies();
+            }
+        }
         else
+        {
             gameOb = Instantiate(tilePrefabs[0]) as GameObject;
+        }
 
         gameOb.transform.SetParent(transform);
         gameOb.transform.position = Vector3.forward * spawnZ;
 
-        NavMeshSurface navMeshSurface = gameOb.GetComponent<NavMeshSurface>();
-        if (navMeshSurface != null)
-        {
-            navMeshSurface.BuildNavMesh();
-            SpawnEnemies(gameOb);
-        }
+
         spawnZ += tileLength;
         activeTiles.Add(gameOb);
     }
-    void SpawnEnemies(GameObject tile)
+
+    void SpawnEnemies()
     {
-        Vector3 enemySpawnPosition = tile.transform.position + new Vector3(0, 2f, 0); // Adjust Y position as needed
-        Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity, tile.transform);
+        tileCounter++;
+        if(activeTiles.Count > 7 && tileCounter % 3==0) {
+            GameObject lastTile = activeTiles[^2];
+            Vector3 spawnPosition = GetRandomPointInCollider(lastTile.GetComponent<Collider>());
+
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+        }
     }
 
     private void DeleteTile()
@@ -97,16 +110,17 @@ public class TileManager : MonoBehaviour
     }
 
     public void SpawnCoins()
-    {        
+    {
         GameObject lastTile = activeTiles[^2];
 
-        int coinsToSpawn = Random.Range(0,3);
+        int coinsToSpawn = Random.Range(0, 3);
         for (int i = 0; i < coinsToSpawn; i++)
         {
-            GameObject temp = Instantiate(coinPrefab, lastTile.transform);
-            temp.transform.position = GetRandomPointInCollider(lastTile.GetComponent<Collider>());
+            GameObject coin = Instantiate(coinPrefab, lastTile.transform);
+            coin.transform.position = GetRandomPointInCollider(lastTile.GetComponent<Collider>());
         }
     }
+
     Vector3 GetRandomPointInCollider(Collider collider)
     {
         Vector3 point = new Vector3(

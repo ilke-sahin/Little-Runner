@@ -26,7 +26,7 @@ public class shooter : MonoBehaviour
     void Shoot()
     {
         animator.SetTrigger("Attack");
-        Vector3 spawnPosition = transform.position + new Vector3(0, 1f, 0);
+        Vector3 spawnPosition = transform.position + new Vector3(0, 0.4f, 0);
         Quaternion spawnRotation = Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0, 0, 150);
         GameObject bulletvar = Instantiate(chooseshootingmaterial, spawnPosition,spawnRotation); // Mermiyi olu?tur
         Rigidbody rb = bulletvar.AddComponent<Rigidbody>(); // Rigidbody bile?eni ekle
