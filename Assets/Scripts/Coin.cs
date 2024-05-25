@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    //sound effect
+    SoundEffectsPLayer soundEffectsplayer;
+
+    private void Awake()
+    {
+        soundEffectsplayer = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundEffectsPLayer>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +28,8 @@ public class Coin : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            soundEffectsplayer.PlaySFX(soundEffectsplayer.collect);
+
             PlayerMotor.numOfCoins++;
             Destroy(gameObject);
         }

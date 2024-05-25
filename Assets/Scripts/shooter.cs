@@ -9,6 +9,12 @@ public class shooter : MonoBehaviour
     public GameObject chooseshootingmaterial; // Mermi prefab'? için referans
     public float bulletspeed = 15f; // Mermi h?z?
     Animator animator;
+    SoundEffectsPLayer soundEffectsplayer;
+
+    private void Awake()
+    {
+        soundEffectsplayer = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundEffectsPLayer>();
+    }
 
     private void Start()
     {
@@ -20,6 +26,7 @@ public class shooter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             Shoot();
+            soundEffectsplayer.PlaySFX(soundEffectsplayer.attack);
         }
     }
 

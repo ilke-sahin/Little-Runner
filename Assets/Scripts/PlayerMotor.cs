@@ -63,6 +63,7 @@ public class PlayerMotor : MonoBehaviour
             // Jumping
             if (Input.GetKeyDown(KeyCode.W))
             {
+                soundEffectsplayer.PlaySFX(soundEffectsplayer.jump);
                 verticalVelocity = jumpForce;
                 animator.SetTrigger("Jump");
 
