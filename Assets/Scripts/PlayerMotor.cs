@@ -60,13 +60,9 @@ public class PlayerMotor : MonoBehaviour
                 animator.SetTrigger("Jump");
 
                 speed = jumpSpeed;
-
             }
         }
-        else
-        {
-            verticalVelocity -= gravity * Time.deltaTime;
-        }
+        else verticalVelocity -= gravity * Time.deltaTime;
 
         // X = left and right
         moveVector.x = Input.GetAxisRaw("Horizontal") * speed;
@@ -89,7 +85,6 @@ public class PlayerMotor : MonoBehaviour
     private IEnumerator Slide()
     {
         isSliding = true;
-
         animator.SetBool("isSliding", true);
 
         //reduce player height when sliding
@@ -108,7 +103,6 @@ public class PlayerMotor : MonoBehaviour
 
         // reset the slide animation
         animator.SetBool("isSliding", false);
-
         isSliding = false;
     }
 
@@ -122,7 +116,7 @@ public class PlayerMotor : MonoBehaviour
         if (hit.transform.tag == "Obstacles" || hit.transform.tag == "Enemy")
         {
             EndOfGame.TriggerGameOver();
-            animator.SetTrigger("Die"); // Maybe we can add death animation
+            animator.SetTrigger("Die");
         }
     }
 

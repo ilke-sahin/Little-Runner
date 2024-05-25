@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8955322500898459853}
-  - component: {fileID: 6909848685033091697}
   - component: {fileID: 6938887433852414760}
   - component: {fileID: -8281493535788361553}
   - component: {fileID: 7762398688595337693}
+  - component: {fileID: 3506130612765928242}
   m_Layer: 0
   m_Name: Slime_01_King
   m_TagString: Enemy
@@ -37,18 +37,6 @@ Transform:
   - {fileID: 5925414060475628767}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6909848685033091697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873531700701352353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4140f25a05e9fe429808742b9e29dee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &6938887433852414760
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -119,6 +107,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.4
   m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &3506130612765928242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873531700701352353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b830ea8760d904e810b347612bfc85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targettingPlayer: 0
 --- !u!1 &2555473679859470979
 GameObject:
   m_ObjectHideFlags: 0

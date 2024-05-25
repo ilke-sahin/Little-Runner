@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class shooter : MonoBehaviour
 {
-    public float damage = 10f;
-    public float range = 100f;
-    public GameObject chooseshootingmaterial; // Mermi prefab'? için referans
-    public float bulletspeed = 15f; // Mermi h?z?
+    public GameObject chooseshootingmaterial;
+    public float bulletspeed = 15f;
     Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-
     }
     void Update()
     {
@@ -28,12 +25,11 @@ public class shooter : MonoBehaviour
         animator.SetTrigger("Attack");
         Vector3 spawnPosition = transform.position + new Vector3(0, 0.4f, 0);
         Quaternion spawnRotation = Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0, 0, 150);
-        GameObject bulletvar = Instantiate(chooseshootingmaterial, spawnPosition,spawnRotation); // Mermiyi olu?tur
-        Rigidbody rb = bulletvar.AddComponent<Rigidbody>(); // Rigidbody bile?eni ekle
-        rb.useGravity = false; // Shootng material'? yerçekimi uygulanmas?n
-        rb.velocity = transform.forward * bulletspeed; // Shootng material'? ileri do?ru hareket ettir
+        GameObject bulletvar = Instantiate(chooseshootingmaterial, spawnPosition,spawnRotation);
+        Rigidbody rb = bulletvar.AddComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.velocity = transform.forward * bulletspeed;
 
-        // Shootng material'? belirli bir süre sonra yok etmek (e?er chooseabullet derseniz sorun oluyor dersten hat?rlarsan?z. Çünkü olu?turan? de?il, runtime esnas?nda olu?an? silece?iz.)
-        Destroy(bulletvar, 2f); // 2 saniye sonra mermiyi yok et
+        Destroy(bulletvar, 2f);
     }
 }

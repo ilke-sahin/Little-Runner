@@ -10,15 +10,20 @@ public class Events : MonoBehaviour
         Time.timeScale = 1;
         transform.position = Vector3.zero;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+    }
+    public void ToGame()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 
     public void Menu()
     {
         SceneManager.LoadScene("MenuScene");
     }
+
     public void QuitGame()
     {
         Application.Quit();
     }
+
 }

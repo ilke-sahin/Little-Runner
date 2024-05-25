@@ -22,6 +22,7 @@ public class Score : MonoBehaviour
          scoreText.text = ((int)score).ToString ();
         
     }
+
      void LevelUp()
     {
         if(difficultyLevel == maxDifficultyLevel)
@@ -29,11 +30,9 @@ public class Score : MonoBehaviour
 
         scoreToNextLevel *= 2;
         difficultyLevel+=0.5f;
-
        GetComponent<PlayerMotor>().Setspeed (difficultyLevel);
 
        Debug.Log (difficultyLevel);
-
     }
 
 }

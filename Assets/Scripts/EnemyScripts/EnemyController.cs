@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics.Internal;
 using UnityEngine;
+using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyController : MonoBehaviour
 {
@@ -8,14 +11,16 @@ public class EnemyController : MonoBehaviour
 
     private Transform player;
 
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float range = 7.5f;
+    private float range = 7.5f;
+
+    private NavMeshAgent agent;
 
     public bool targettingPlayer = false;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("player").transform;
+        agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
  
@@ -23,8 +28,8 @@ public class EnemyController : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, player.position) <= range)
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
             transform.LookAt(player);
+            agent.SetDestination(player.position);
             targettingPlayer = true;
         }
         else

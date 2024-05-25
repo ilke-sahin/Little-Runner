@@ -14,7 +14,7 @@ public class EndOfGame : MonoBehaviour
     {
         gameOver = false;
         Time.timeScale = 1;
-        gameOverPanel.SetActive(false); // Ensure the panel is initially hidden
+        gameOverPanel.SetActive(false); // panel is hidden at first
     }
 
     void Update()

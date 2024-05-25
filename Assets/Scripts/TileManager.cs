@@ -86,6 +86,8 @@ public class TileManager : MonoBehaviour
             Vector3 spawnPosition = GetRandomPointInCollider(lastTile.GetComponent<Collider>());
 
             GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+
+            Destroy(enemy, 7f); //destroy slime after a while
         }
     }
 
