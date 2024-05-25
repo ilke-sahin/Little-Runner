@@ -452,6 +452,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7015426214271825316, guid: bd384c60c7963ba429357e1c90c356ed, type: 3}
+      propertyPath: m_UseGeometry
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7015426214271825316, guid: bd384c60c7963ba429357e1c90c356ed, type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3193117918109651614, guid: bd384c60c7963ba429357e1c90c356ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

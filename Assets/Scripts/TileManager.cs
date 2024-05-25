@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
     public GameObject[] tilePrefabs;
-    public GameObject coinPrefab;
+    public GameObject coinPrefab, enemyPrefab;
 
     private Transform playerTransform;
     private float spawnZ = -3.0f;
@@ -59,8 +60,20 @@ public class TileManager : MonoBehaviour
 
         gameOb.transform.SetParent(transform);
         gameOb.transform.position = Vector3.forward * spawnZ;
+
+        NavMeshSurface navMeshSurface = gameOb.GetComponent<NavMeshSurface>();
+        if (navMeshSurface != null)
+        {
+            navMeshSurface.BuildNavMesh();
+            SpawnEnemies(gameOb);
+        }
         spawnZ += tileLength;
         activeTiles.Add(gameOb);
+    }
+    void SpawnEnemies(GameObject tile)
+    {
+        Vector3 enemySpawnPosition = tile.transform.position + new Vector3(0, 2f, 0); // Adjust Y position as needed
+        Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity, tile.transform);
     }
 
     private void DeleteTile()

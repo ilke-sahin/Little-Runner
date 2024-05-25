@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4f13369c493a4844885f5987f523330b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.47591847, g: 0.7641221, b: 0.93448293, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -205,6 +205,7 @@ MonoBehaviour:
   - {fileID: 2325358161083732884, guid: 59f6980d0627dc6499deb019e1797f0b, type: 3}
   - {fileID: 2325358161083732884, guid: 3cf254fe66b18b6438a0abbb22e47cbe, type: 3}
   coinPrefab: {fileID: 7604795644614162803, guid: 964759bf4d0f050448ee809e8f0b961d, type: 3}
+  enemyPrefab: {fileID: 873531700701352353, guid: 28d0a30d6aed6fc4c8ca473413f70c24, type: 3}
 --- !u!4 &74964862
 Transform:
   m_ObjectHideFlags: 0
