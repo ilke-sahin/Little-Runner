@@ -19,7 +19,7 @@ public class PlayerMotor : MonoBehaviour
     private float speed = 5.0f,
         jumpSpeed,
         verticalVelocity = 0.0f,
-        jumpForce = 8.0f, // The force applied when jumping
+        jumpForce = 10.0f, // The force applied when jumping
         gravity = 12.0f;
 
     public static int numOfCoins;

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EndOfGame : MonoBehaviour
 {
@@ -10,6 +8,8 @@ public class EndOfGame : MonoBehaviour
     public GameObject gameOverPanel;
     public float delay = 0.5f;
     private CoinCounter coinCounter;
+    public TMP_Text highestCoinText;
+    public GameObject highScoreContainer;
 
     private void Start()
     {
@@ -17,6 +17,7 @@ public class EndOfGame : MonoBehaviour
         Time.timeScale = 1;
         gameOverPanel.SetActive(false);
         coinCounter = GameObject.FindObjectOfType<CoinCounter>();
+        highestCoinText.text = "Highest Coin: " + PlayerPrefs.GetInt("HighestCoin", 0).ToString(); 
     }
 
     private void Update()
@@ -28,10 +29,11 @@ public class EndOfGame : MonoBehaviour
             {
                 Time.timeScale = 0;
                 gameOverPanel.SetActive(true);
+                highScoreContainer.SetActive(true);
+
                 gameOver = false;
                 gameOverTimer = 0f;
 
-                // Coin sayýsýný göster
                 if (coinCounter != null)
                 {
                     coinCounter.ShowFinalCoinCount();
