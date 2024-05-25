@@ -7,8 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyController : MonoBehaviour
 {
-
-
+    private Animator animator;
     private Transform player;
 
     private float range = 7.5f;
@@ -20,6 +19,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -28,9 +28,15 @@ public class EnemyController : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, player.position) <= range)
         {
+            animator.SetBool("isMoving", true);
+
             transform.LookAt(player);
             agent.SetDestination(player.position);
             targettingPlayer = true;
+            if (Vector3.Distance(transform.position, player.position) <= 1f)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
         else
             targettingPlayer = false;
