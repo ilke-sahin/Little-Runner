@@ -10,6 +10,14 @@ public class EndOfGame : MonoBehaviour
     public GameObject gameOverPanel;
     public float delay = 0.5f;
 
+    //sound effect
+    SoundEffectsPLayer soundEffectsplayer;
+
+    private void Awake()
+    {
+        soundEffectsplayer = GameObject.FindGameObjectWithTag("Audio").GetComponent<SoundEffectsPLayer>();
+    }
+
     void Start()
     {
         gameOver = false;
@@ -28,6 +36,9 @@ public class EndOfGame : MonoBehaviour
                 gameOverPanel.SetActive(true);
                 gameOver = false;
                 gameOverTimer = 0f;
+
+                soundEffectsplayer.PlaySFX(soundEffectsplayer.endgame);//sfx
+                soundEffectsplayer.StopBackgroundMusic(); //end music
             }
         }
         
@@ -36,6 +47,7 @@ public class EndOfGame : MonoBehaviour
     public static void TriggerGameOver()
     {
         gameOver = true;
+         
     }
 
 }

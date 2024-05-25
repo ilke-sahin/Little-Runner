@@ -7,7 +7,7 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private Vector3 moveVector;
     private Animator animator;
-
+    //sound effect
     SoundEffectsPLayer soundEffectsplayer;
 
     private void Awake()

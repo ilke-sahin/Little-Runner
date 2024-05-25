@@ -902,6 +902,7 @@ MonoBehaviour:
   sfx1: {fileID: 8300000, guid: 087224dd7ec352f42a3b950a07009a88, type: 3}
   sfx2: {fileID: 8300000, guid: 9b05bf85194a6994e87a326b55b12087, type: 3}
   background: {fileID: 0}
+  endgame: {fileID: 0}
   death: {fileID: 0}
   attack: {fileID: 0}
   jump: {fileID: 0}
@@ -1116,9 +1117,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.23
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2044,7 +2045,8 @@ MonoBehaviour:
   music: {fileID: 1150257065}
   sfx1: {fileID: 0}
   sfx2: {fileID: 0}
-  background: {fileID: 8300000, guid: 4f59c19861f17ce4b9d69274c433aea2, type: 3}
+  background: {fileID: 8300000, guid: 6031fe4288f8ff34a9e02da1b6fefbda, type: 3}
+  endgame: {fileID: 8300000, guid: 4f59c19861f17ce4b9d69274c433aea2, type: 3}
   death: {fileID: 8300000, guid: efc3f2eb62e42f44b849b70d51c2fe58, type: 3}
   attack: {fileID: 8300000, guid: 44766caa059435f4fb71af84b2bea7e4, type: 3}
   jump: {fileID: 8300000, guid: e26b12344a8fdd2439361d014323be33, type: 3}

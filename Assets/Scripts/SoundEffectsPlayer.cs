@@ -12,6 +12,7 @@ public class SoundEffectsPLayer : MonoBehaviour
     [Header ("-------- Audio Clip ---------")]
     public AudioClip sfx1,sfx2;
     public AudioClip background;
+    public AudioClip endgame;
     public AudioClip death;
     public AudioClip attack;
     public AudioClip jump;
@@ -32,6 +33,13 @@ public class SoundEffectsPLayer : MonoBehaviour
     {
         music.clip = background;
         music.Play();
+    }
+
+
+    public void StopBackgroundMusic()
+    {
+        music.clip = background;
+        music.Stop();
     }
 
     public void PlaySFX(AudioClip clip)

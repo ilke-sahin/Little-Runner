@@ -7,6 +7,7 @@ public class shooter : MonoBehaviour
     public GameObject chooseshootingmaterial;
     public float bulletspeed = 15f;
     Animator animator;
+    //sound effect
     SoundEffectsPLayer soundEffectsplayer;
 
     private void Awake()
